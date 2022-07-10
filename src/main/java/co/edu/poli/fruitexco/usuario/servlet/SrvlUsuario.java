@@ -29,6 +29,7 @@ public class SrvlUsuario extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletOutputStream out = response.getOutputStream();
         response.setContentType("application/json");
+        this.setAccessControlHeaders(response);
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.create();
         String id = request.getParameter("id");
@@ -45,6 +46,7 @@ public class SrvlUsuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletOutputStream out = response.getOutputStream();
         response.setContentType("application/json");
+        this.setAccessControlHeaders(response);
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.create();
         JsonObject body = new JsonParser().parse(this.getParamsFromPost(request)).getAsJsonObject();
@@ -72,6 +74,7 @@ public class SrvlUsuario extends HttpServlet {
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletOutputStream out = response.getOutputStream();
         response.setContentType("application/json");
+        this.setAccessControlHeaders(response);
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.create();
         JsonObject body = new JsonParser().parse(this.getParamsFromPost(request)).getAsJsonObject();
@@ -102,6 +105,7 @@ public class SrvlUsuario extends HttpServlet {
         int index = buscarIndex(id);
         ServletOutputStream out = response.getOutputStream();
         response.setContentType("application/json");
+        this.setAccessControlHeaders(response);
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.create();
         if (index != -1){
@@ -149,5 +153,10 @@ public class SrvlUsuario extends HttpServlet {
         String params = sb.toString();
 
         return params;
+    }
+
+    private void setAccessControlHeaders(HttpServletResponse resp) {
+        resp.setHeader("Access-Control-Allow-Origin", "*");
+        resp.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS, HEAD, PUT, POST");
     }
 }
