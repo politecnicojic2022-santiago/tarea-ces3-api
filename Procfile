@@ -1,1 +1,1 @@
-web: java -cp target/classes/:target/Usuario-1.0-SNAPSHOT/* co.edu.poli.fruitexco.usuario.HelloServlet
+web: java $JAVA_OPTS -jar target/dependency/webapp-runner.jar --port $PORT target/*.war
