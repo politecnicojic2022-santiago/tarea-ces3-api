@@ -1,0 +1,1 @@
+web: java -cp target/classes/:target/Usuario-1.0-SNAPSHOT/* co.edu.poli.fruitexco.usuario.HelloServlet
