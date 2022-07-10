@@ -113,6 +113,7 @@ public class SrvlUsuario extends HttpServlet {
             out.print(gson.toJson(error));
         }
         out.flush();
+
     }
 
     private Usuario buscarUsuario(String id) {
