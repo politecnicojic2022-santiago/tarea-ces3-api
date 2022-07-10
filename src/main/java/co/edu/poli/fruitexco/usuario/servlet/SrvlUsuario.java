@@ -21,7 +21,7 @@ public class SrvlUsuario extends HttpServlet {
     public static ArrayList<Usuario> USUARIOS = new ArrayList<>(
             Arrays.asList(
                     new Usuario(1, "santiago@gmail.com", "santiago", "1232343556", "3217443912", "Calle 1 # 1 - 1", "ADMINISTRADOR", "ACTIVO"),
-                    new Usuario(1, "pp@gmail.com", "pepe", "43dj42jh", "3113930740", "Calle 1 # 1 - 1", "CANDIDATO", "ACTIVO")
+                    new Usuario(2, "pp@gmail.com", "pepe", "43dj42jh", "3113930740", "Calle 1 # 1 - 1", "CANDIDATO", "ACTIVO")
             )
     );
 
@@ -54,7 +54,7 @@ public class SrvlUsuario extends HttpServlet {
         Usuario usuario = new Usuario(
                 (rd.nextInt(max - min) + min),
                 body.get("email").getAsString(),
-                body.get("user_name").getAsString(),
+                body.get("userName").getAsString(),
                 body.get("password").getAsString(),
                 body.get("phone").getAsString(),
                 body.get("address").getAsString(),
@@ -81,9 +81,8 @@ public class SrvlUsuario extends HttpServlet {
         String id = request.getParameter("id");
         if (id != null) {
             Usuario usu = buscarUsuario(id);
-            out.print(gson.toJson(usu));
             usu.setEmail(body.get("email").getAsString());
-            usu.setUserName(body.get("user_name").getAsString());
+            usu.setUserName(body.get("userName").getAsString());
             usu.setPassword(body.get("password").getAsString());
             usu.setPhone(body.get("phone").getAsString());
             usu.setAddress(body.get("address").getAsString());

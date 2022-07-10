@@ -3,7 +3,7 @@ package co.edu.poli.fruitexco.usuario.entities;
 import co.edu.poli.fruitexco.usuario.entities.enumerator.EstadoEnum;
 import co.edu.poli.fruitexco.usuario.entities.enumerator.RolEnum;
 
-import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.UUID;
 
 public class Usuario {
@@ -12,8 +12,8 @@ public class Usuario {
     private String email;
     private String userName;
     private String password;
-    private LocalDateTime expTime;
-    private LocalDateTime createdOn;
+    private Calendar expTime;
+    private Calendar createdOn;
     private String phone;
     private String address;
     private RolEnum rol;
@@ -25,8 +25,9 @@ public class Usuario {
         this.email = email;
         this.userName = userName;
         this.password = password;
-        this.expTime = LocalDateTime.now().plusMinutes(15);
-        this.createdOn = LocalDateTime.now();
+        this.expTime = Calendar.getInstance();
+        this.expTime.add(Calendar.MINUTE, 15);
+        this.createdOn = Calendar.getInstance();
         this.phone = phone;
         this.address = address;
         this.rol = RolEnum.valueOf(rol);
@@ -38,8 +39,9 @@ public class Usuario {
         this.email = email;
         this.userName = userName;
         this.password = password;
-        this.expTime = LocalDateTime.now().plusMinutes(15);
-        this.createdOn = LocalDateTime.now();
+        this.expTime = Calendar.getInstance();
+        this.expTime.add(Calendar.MINUTE, 15);
+        this.createdOn = Calendar.getInstance();
         this.phone = phone;
         this.address = address;
         this.rol = RolEnum.valueOf(rol.toUpperCase());
@@ -90,19 +92,19 @@ public class Usuario {
         this.password = password;
     }
 
-    public LocalDateTime getExpTime() {
+    public Calendar getExpTime() {
         return expTime;
     }
 
-    public void setExpTime(LocalDateTime expTime) {
+    public void setExpTime(Calendar expTime) {
         this.expTime = expTime;
     }
 
-    public LocalDateTime getCreatedOn() {
+    public Calendar getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(LocalDateTime createdOn) {
+    public void setCreatedOn(Calendar createdOn) {
         this.createdOn = createdOn;
     }
 
